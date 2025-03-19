@@ -3,436 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Research Labs</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-        }
-
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-
-        .logo span {
-            color: #3498db;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #2c3e50;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #3498db;
-        }
-
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-
-        main {
-            padding-top: 80px;
-        }
-
-        section {
-            padding: 4rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        #hero {
-            background-color: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 6rem 5%;
-        }
-
-        #hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        #hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background-color: #3498db;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #2980b9;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: #2c3e50;
-            text-align: center;
-        }
-
-        .section-title {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background-color: #3498db;
-        }
-
-        .research-areas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .research-card {
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .research-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-        }
-
-        .research-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .research-content {
-            padding: 1.5rem;
-        }
-
-        .research-content h3 {
-            margin-bottom: 0.8rem;
-            color: #2c3e50;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .team-member {
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .team-member img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 2rem auto 1rem;
-            border: 5px solid #f8f9fa;
-        }
-
-        .team-info {
-            padding: 0 1.5rem 2rem;
-        }
-
-        .team-info h3 {
-            margin-bottom: 0.3rem;
-            color: #2c3e50;
-        }
-
-        .team-info .role {
-            color: #3498db;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .publications {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            margin-top: 2rem;
-        }
-
-        .pub-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .pub-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .pub-item h3 {
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-        }
-
-        .pub-item .authors {
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-
-        .pub-item .journal {
-            color: #3498db;
-            font-weight: 500;
-        }
-
-        .contact-info {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            margin-top: 2rem;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .contact-card {
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: #3498db;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            color: #fff;
-            font-size: 1.2rem;
-        }
-
-        .contact-details h3 {
-            margin-bottom: 0.3rem;
-            color: #2c3e50;
-            font-size: 1.1rem;
-        }
-
-        form {
-            margin-top: 2rem;
-            display: grid;
-            gap: 1rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        input, textarea {
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        button {
-            cursor: pointer;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            background-color: #3498db;
-            color: #fff;
-            border-radius: 4px;
-            font-weight: 500;
-            transition: background-color 0.3s;
-            font-size: 1rem;
-        }
-
-        button:hover {
-            background-color: #2980b9;
-        }
-
-        footer {
-            background-color: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 5%;
-        }
-
-        .social-links {
-            margin: 1rem 0;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background-color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #2c3e50;
-            text-decoration: none;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .social-links a:hover {
-            background-color: #3498db;
-            color: #fff;
-        }
-
-        #back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #3498db;
-            color: #fff;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-        }
-
-        #back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: #fff;
-                flex-direction: column;
-                padding: 1rem 5%;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-                display: none;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                margin: 0.5rem 0;
-            }
-
-            #hero h1 {
-                font-size: 2rem;
-            }
-
-            #hero p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    <title>Stethaim </title>
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
     <a href="#top" id="back-to-top">↑</a>
 
     <header id="top">
         <nav>
-            <div class="logo">Quantum<span>Research</span></div>
+            <div><img src="images\LOGO BEST.png" alt="logo" style="width:130px; height: 70px;"> </div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#research">Research</a></li>
@@ -446,39 +25,42 @@
 
     <main>
         <section id="hero">
-            <h1>Advancing Scientific Knowledge</h1>
-            <p>Quantum Research Labs is dedicated to pushing the boundaries of scientific discovery through innovative research methodologies and interdisciplinary collaboration.</p>
+            <h1>Revolutionizing Medical Diagnosis: AI Solutions for Patient-Centric Care</h1>
+            <p>We are at the forefront of transforming healthcare through cutting-edge AI technologies and innovative hardware solutions.
+             <br>By combining AI with robust hardware deployment, we are redefining the future of medical diagnosis and making healthcare truly patient-centric.
+            </p>
             <a href="#research" class="btn">Explore Our Research</a>
         </section>
 
         <section id="about">
             <h2><span class="section-title">About Us</span></h2>
-            <p>Founded in 2015, Quantum Research Labs brings together leading scientists from diverse backgrounds to tackle some of the most challenging problems in modern science. Our state-of-the-art facilities and collaborative environment foster innovation and excellence in research.</p>
-            <p>We are committed to translating fundamental discoveries into practical applications that address global challenges in health, energy, and technology.</p>
+            <p>Founded in 2023, we bring together a group of visonaries and masters of technologies to implement simple solutions for driving the revolution in medical technology.</p>
+            <p>We are committed to translating fundamental discoveries into practical applications that address global challenges in health. ,<br> Our AI-driven systems empower healthcare providers to make faster, more informed decisions.</p>
         </section>
 
         <section id="research">
             <h2><span class="section-title">Research Areas</span></h2>
             <div class="research-areas">
                 <div class="research-card">
-                    <img src="/api/placeholder/400/320" alt="Molecular Biology Research">
+                    <img src="images\shutterstock_1236109669.jpg" alt="Signal Processing">
                     <div class="research-content">
-                        <h3>Molecular Biology</h3>
-                        <p>Our molecular biology team investigates fundamental cellular processes and develops novel therapeutic approaches for various diseases.</p>
+                        <h3>Audio Signal Processing</h3>
+                        <p>We use audio signal Processing for filtering and processing of certain signals which help us to mark more detailed artifacts and details in sound.
+                        </p>
                     </div>
                 </div>
                 <div class="research-card">
-                    <img src="/api/placeholder/400/320" alt="Materials Science Research">
+                    <img src="images\CAD.jpg" alt="Mechanical Hardware Design">
                     <div class="research-content">
-                        <h3>Materials Science</h3>
-                        <p>We develop advanced materials with unique properties for applications in energy storage, electronics, and environmental remediation.</p>
+                        <h3>Mechanical hardware design</h3>
+                        <p>We develop advanced mechanical designs with unique form factor which provide improved and superior product development.</p>
                     </div>
                 </div>
                 <div class="research-card">
-                    <img src="/api/placeholder/400/320" alt="Computational Science Research">
+                    <img src="images\Difference-Between-Combinational-Circuit-and-Sequential-Circuit.jpg" alt="Electronics and Instrumentation">
                     <div class="research-content">
-                        <h3>Computational Science</h3>
-                        <p>Our computational team develops algorithms and models to analyze complex data sets and simulate physical systems at multiple scales.</p>
+                        <h3>Electronics and Instrumentation</h3>
+                        <p>Our electronics team develops circuitry and sensors combined with different algorithms and models to analyze complex data sets sense various parameters on device and uses Edge-AI to build excellent and fail-safe components.</p>
                     </div>
                 </div>
             </div>
@@ -487,37 +69,51 @@
         <section id="team">
             <h2><span class="section-title">Our Team</span></h2>
             <div class="team-grid">
+            
                 <div class="team-member">
-                    <img src="/api/placeholder/400/320" alt="Dr. Sarah Chen">
+                    <img src="/api/placeholder/400/320" alt="Dr. Shikha Behera">
                     <div class="team-info">
-                        <h3>Dr. Sarah Chen</h3>
-                        <p class="role">Director & Principal Investigator</p>
-                        <p>Dr. Chen specializes in quantum computing and has over 15 years of research experience in the field.</p>
+                        <h3>Dr. Shikha Behera</h3>
+                        <p class="role">Director & Chief Medical Officer</p>
+                        <p>Dr. Shikha specializes in medical workflows and how to digitize them with the help of certain methods and technologies.<br>
+                            She hearts out the lacuna in the medical field which we should solve and is always keen to build products which help to provide best of care to patients.</p>
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="/api/placeholder/400/320" alt="Dr. James Wilson">
+                    <img src="/api/placeholder/400/320" alt="Sanat Behera">
                     <div class="team-info">
-                        <h3>Dr. James Wilson</h3>
-                        <p class="role">Senior Researcher</p>
-                        <p>Dr. Wilson leads our materials science division with expertise in nanomaterials and energy applications.</p>
+                        <h3>Mr. Sanat Behera</h3>
+                        <p class="role">Co-Founder and CEO</p>
+                        <p>Mr.Sanat leads the organization and guides us in the direction of what we want to achieve by keeping us focused as well as by not letting us to delve into grieve mistakes.<br> 
+                          Along with bringing valuable collaborations he is the one who visions the next 10 years of the company and executes the steps to make sure we add a dent in the industry. </p>
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="/api/placeholder/400/320" alt="Dr. Maria Rodriguez">
+                    <img src="/api/placeholder/400/320" alt="Rakshit Kumar Singh">
                     <div class="team-info">
-                        <h3>Dr. Maria Rodriguez</h3>
-                        <p class="role">Lead Computational Scientist</p>
-                        <p>Dr. Rodriguez develops machine learning algorithms for analyzing complex biological data.</p>
+                        <h3>Mr. Rakshit Kumar Singh</h3>
+                        <p class="role">Chief Technology Officer</p>
+                        <p>Mr. Rakshit leads our team to the best of the technology avenues and technical excellence.He guides on what are the necessary technology and carves out the balance between the R&D and using commercially available technologies along with bringing on viable research projects.</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="/api/placeholder/400/320" alt="Lohith Dayantri">
+                    <div class="team-info">
+                        <h3>Mr. Lohith Dayantri</h3>
+                        <p class="role">VP Hardware and Electronics</p>
+                        <p>Mr. Lohith is the nuclear reactor for our team who provides the best of hardware and the electronics that helps to get the productrobust and develops the best of hardware designs in most efficient way and leads us to beat other competitors with our superior product.</p>
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="/api/placeholder/400/320" alt="Dr. David Kim">
+                    <img src="/api/placeholder/400/320" alt="Prasad Patra">
                     <div class="team-info">
-                        <h3>Dr. David Kim</h3>
-                        <p class="role">Research Scientist</p>
-                        <p>Dr. Kim focuses on molecular biology with an emphasis on gene editing technologies.</p>
+                        <h3>Mr. Prasad Patra</h3>
+                        <p class="role">Vp operations </p>
+                        <p>Mr. Prasad eases out the gap between what we aim and what we do by breaking complex things to simpler steps and letting the team execute their best technical skills while keeping them free from other operational things. He also brings the team in tandem so as to make sure that we are always on the same page and speak as one voice.</p>
                     </div>
+                </div>
+
                 </div>
             </div>
         </section>
